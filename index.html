@@ -78,6 +78,9 @@
       </button>
 
       <p id="signupStatus" role="status"></p>
+
+      <button id="forgotPassword" class="button" type="button" disabled>Şifremi unuttum</button>
+    
     </form>
 
     <h3 id="loginHeading">Zaten hesabın var mı?</h3>
@@ -102,6 +105,24 @@
     </form>
 
   </section>
+
+  <section id="recoveryPanel" class="panel" hidden>
+  <h2>Yeni şifreni belirle</h2>
+
+  <form id="recoveryForm">
+    <div class="field">
+      <label for="newPassword">Yeni şifre</label>
+      <input class="control" id="newPassword" type="password"
+             autocomplete="new-password" minlength="12" required>
+    </div>
+
+    <button class="button primary" type="submit" disabled>
+      Şifreyi güncelle
+    </button>
+
+    <p id="recoveryStatus" role="status"></p>
+  </form>
+</section>
 
   <div class="shell" id="shell">
     <div class="mobiletabs">

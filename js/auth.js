@@ -82,7 +82,19 @@ const editorShell = document.getElementById('shell');
 let pageMode = 'welcome';
 let activeSession = null;
 
+let recoveringPassword = false;
+const recoveryPanel = document.getElementById('recoveryPanel');
+
 function renderPage() {
+  recoveryPanel.hidden = !recoveringPassword;
+
+if (recoveringPassword) { 
+  welcomePanel.hidden = true;
+  authPanel.hidden = true;
+  editorShell.hidden = true;
+  document.getElementById('openAccount').hidden = true;
+  return;
+}
     const signedIn = Boolean(activeSession);
 
     welcomePanel.hidden = signedIn || pageMode !== 'welcome';
@@ -106,6 +118,14 @@ document.getElementById('chooseGuest').addEventListener('click', () => {
 
 window.LL_SUPABASE.auth.onAuthStateChange((event, session) => {
     activeSession = session;
+
+    if (event === 'PASSWORD_RECOVERY') {
+  recoveringPassword = true;
+  }
+
+    if (event === 'SIGNED_OUT') {
+    recoveringPassword = false;
+  }
 
     if (!session) pageMode = 'welcome'
 
@@ -156,3 +176,74 @@ document.getElementById('backToGuest').addEventListener('click', () => {
   pageMode = 'guest';
   renderPage();
 });
+
+const recoveryForm = document.getElementById('recoveryForm');
+const recoveryStatus = document.getElementById('recoveryStatus');
+const recoveryButton = recoveryForm.querySelector('button[type="submit"]');
+
+recoveryForm.addEventListener('submit', async event => {
+  event.preventDefault();
+
+  if (recoveryButton.disabled) return;
+
+  if (!recoveringPassword || !activeSession) {
+    recoveryStatus.textContent = 'Önce e-postandaki sıfırlama bağlantısını aç.';
+    return;
+  }
+
+  const passwordInput = document.getElementById('newPassword');
+
+  recoveryButton.disabled = true;
+  recoveryStatus.textContent = 'Şifre güncelleniyor…';
+
+  try {
+    const { error } = await window.LL_SUPABASE.auth.updateUser({
+      password: passwordInput.value
+    });
+
+    if (error) throw error;
+
+    passwordInput.value = '';
+    recoveryStatus.textContent = '';
+    recoveringPassword = false;
+    renderPage();
+    sessionStatus.textContent = 'Şifren güncellendi 💌';
+  } catch (error) {
+    recoveryStatus.textContent = 'Şifre güncellenemedi: ' + error.message;
+  } finally {
+    recoveryButton.disabled = false;
+  }
+});
+
+recoveryButton.disabled = false;
+
+const forgotPassword = document.getElementById('forgotPassword');
+
+forgotPassword.addEventListener('click', async () => {
+  if (forgotPassword.disabled) return;
+
+  const emailInput = document.getElementById('loginEmail');
+
+  if (!emailInput.reportValidity()) return;
+
+  forgotPassword.disabled = true;
+  loginStatus.textContent = 'Sıfırlama isteği gönderiliyor…';
+
+  try {
+    const { error } = await window.LL_SUPABASE.auth.resetPasswordForEmail(
+      emailInput.value.trim(),
+      { redirectTo: 'http://localhost:8000/' }
+    );
+
+    if (error) throw error;
+
+    loginStatus.textContent =
+      'Bu adres için işlem yapılabiliyorsa sıfırlama e-postası gönderildi 💌';
+  } catch (error) {
+    loginStatus.textContent = 'İstek gönderilemedi: ' + error.message;
+  } finally {
+    forgotPassword.disabled = false;
+  }
+});
+
+forgotPassword.disabled = false;
