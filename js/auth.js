@@ -90,6 +90,8 @@ function renderPage() {
     editorShell.hidden = !signedIn && pageMode !== 'guest';
     document.getElementById('openAccount').hidden =
     signedIn || pageMode !== 'guest';
+    document.getElementById('backToGuest').hidden =
+    signedIn || pageMode !== 'account';
 }
 
 document.getElementById('chooseAccount').addEventListener('click',() => { 
@@ -148,4 +150,9 @@ document.getElementById('openAccount').addEventListener('click', () => {
   pageMode = 'account';
   renderPage();
   authPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
+
+document.getElementById('backToGuest').addEventListener('click', () => {
+  pageMode = 'guest';
+  renderPage();
 });
