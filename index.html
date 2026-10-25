@@ -10,6 +10,10 @@
   <script src="js/i18n.js" defer></script>
   <script src="js/templates.js" defer></script>
   <script src="js/story-template.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+  <script src="js/supabase-config.js" defer></script>
+  <script src="js/supabase-client.js" defer></script>
+  <script src="js/auth.js" defer></script>
   <script src="js/app.js" defer></script>
 </head>
 <body>
@@ -19,6 +23,7 @@
       <span><span class="brand-title">Love<span>Lab</span></span><span class="brand-sub" data-i18n="subtitle">Little surprises studio</span></span>
     </a>
     <div class="topright">
+      <button id="openAccount" class="button" type="button" hidden>Giriş yap / Hesabım</button>
       <label class="language-control">
         <span data-i18n="language">Dil / Language</span>
         <select id="langSelect" aria-label="Language">
@@ -32,6 +37,69 @@
       <button type="button" class="button primary" id="topExport" data-i18n="downloadHtml">↓ HTML indir</button>
     </div>
   </header>
+
+  <section id="welcomePanel" class="panel" hidden>
+  <h1>LoveLab’e hoş geldin 💌</h1>
+  <p>Küçük bir sürpriz hazırla, birlikte bir anı yarat.</p>
+
+  <button id="chooseAccount" class="button primary" type="button">
+    Giriş yap / Hesap oluştur
+  </button>
+
+  <button id="chooseGuest" class="button" type="button">
+    Üye olmadan dene
+  </button>
+
+  <p>Eşleşmek ve mesajlaşmak için hesap gerekir.</p>
+</section>
+
+  <section id="authPanel" class="panel" aria-labelledby="signupTitle">
+    <h2 id="signupTitle">LoveLab'e katil 💌</h2>
+
+    <p id="sessionStatus" role="status">Oturum kontrol ediliyor…</p>
+    <button id="signOutButton" class="button" type="button" hidden>Çıkış yap</button>
+
+    <form id="signupForm">
+      <div class="field">
+        <label for="signupEmail">E-Posta</label>
+        <input class="control" id="signupEmail" type="email" autocomplete="email" required>
+      </div>
+
+      <div class="field">
+        <label for="signupPassword">Sifre</label>
+        <input class="control" id="signupPassword" type="password" autocomplete="new-password" minlength="12" required>
+      </div>
+
+      <p>E-postan partnerine görünmez.</p>
+      <button class="button primary" type="submit" disabled>
+        Hesap oluştur      
+      </button>
+
+      <p id="signupStatus" role="status"></p>
+    </form>
+
+    <h3 id="loginHeading">Zaten hesabın var mı?</h3>
+
+    <form id="loginForm">
+      <div class="field">
+        <label for="loginEmail">E-posta</label>
+        <input class="control" id="loginEmail" type="email" autocomplete="username" required>
+      </div>
+
+      <div class="field">
+        <label for="loginPassword">Şifre</label>
+        <input class="control" id="loginPassword" type="password" autocomplete="current-password" required>
+      </div>
+
+      <button class="button primary" type="submit" disabled>
+      Giriş yap 
+      </button>
+
+      <p id="loginStatus" role="status"></p>
+
+    </form>
+
+  </section>
 
   <div class="shell" id="shell">
     <div class="mobiletabs">
