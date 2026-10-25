@@ -1,0 +1,12 @@
+{
+  "name": "lovelab-studio",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Multilingual interactive mini-story creator",
+  "scripts": {
+    "build": "node tools/build.mjs",
+    "serve": "python3 -m http.server 8000",
+    "test": "node tests/smoke.mjs",
+    "examples": "node tools/create-examples.mjs"
+  }
+}

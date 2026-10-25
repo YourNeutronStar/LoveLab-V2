@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#faf7fd">
+  <meta name="description" content="LoveLab Studio: Create delightful interactive mini-sites, invitations and surprises.">
+  <title>LoveLab Studio — Create your own mini surprise 💌</title>
+  <link rel="stylesheet" href="assets/editor.css">
+  <script src="js/i18n.js" defer></script>
+  <script src="js/templates.js" defer></script>
+  <script src="js/story-template.js" defer></script>
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <header class="top">
+    <a href="./" class="brand" aria-label="LoveLab Studio home">
+      <span class="brand-icon">💌</span>
+      <span><span class="brand-title">Love<span>Lab</span></span><span class="brand-sub" data-i18n="subtitle">Little surprises studio</span></span>
+    </a>
+    <div class="topright">
+      <label class="language-control">
+        <span data-i18n="language">Dil / Language</span>
+        <select id="langSelect" aria-label="Language">
+          <option value="tr">🇹🇷 Türkçe</option>
+          <option value="en">🇬🇧 English</option>
+          <option value="de">🇩🇪 Deutsch</option>
+        </select>
+      </label>
+      <span class="saved" id="savedStatus" role="status"></span>
+      <button type="button" class="button dark" id="topDemo" data-i18n="openSurprise">▶ Sürprizi aç</button>
+      <button type="button" class="button primary" id="topExport" data-i18n="downloadHtml">↓ HTML indir</button>
+    </div>
+  </header>
+
+  <div class="shell" id="shell">
+    <div class="mobiletabs">
+      <button id="tabEdit" class="current" type="button" data-i18n="edit">✏️ Düzenle</button>
+      <button id="tabPreview" type="button" data-i18n="previewTab">📱 Önizle</button>
+    </div>
+    <section class="sidebar">
+      <div class="sectionheader">
+        <div><div class="overline" data-i18n="studio">01 · Stüdyo</div><h2 data-i18n="createSurprise">Kendi sürprizini tasarla ✨</h2></div>
+        <button class="button tiny" type="button" id="resetAll" data-i18n="reset">↻ Sıfırla</button>
+      </div>
+      <p class="help" data-i18n="intro">Bir şablon seç, metinleri düzenle, sonra küçük bir site olarak paylaş.</p>
+
+      <div class="panel"><div class="panelhead"><h3 data-i18n="templates">🎭 Hazır şablonlar</h3><span class="tag" data-i18n="sixStories">6 HİKÂYE</span></div><div id="templates" class="templates"></div></div>
+      <div class="panel">
+        <div class="panelhead"><h3 data-i18n="personalize">💗 Kimden kime?</h3><span class="tag" data-i18n="makeYours">KİŞİSELLEŞTİR</span></div>
+        <div class="fields">
+          <div class="two">
+            <div class="field"><label for="toInput" data-i18n="to">Kime?</label><input class="control" id="toInput" maxlength="45" data-meta="to"></div>
+            <div class="field"><label for="fromInput" data-i18n="from">Kimden?</label><input class="control" id="fromInput" maxlength="45" data-meta="from"></div>
+          </div>
+          <div class="field"><label for="projectTitle" data-i18n="siteName">Site adı</label><input class="control" id="projectTitle" maxlength="75" data-meta="name"></div>
+          <div class="field"><span class="lab" data-i18n="visualTheme">Görsel tema</span><div id="themes" class="swatches"></div></div>
+          <p class="help inline-help" data-i18n="languageNote">Dil seçimi arayüzü ve sistem metinlerini değiştirir; kendi yazdığın metinler otomatik çevrilmez. İngilizce içerik için şablonu yeniden seçebilirsin.</p>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panelhead"><h3 data-i18n="questions">🧩 Sorular ve butonlar</h3><span class="tag" id="sceneCount">0</span></div>
+        <div id="sceneList"></div>
+        <button type="button" id="addScene" class="button soft full" data-i18n="addScene">＋ Yeni soru ekle</button>
+        <p class="help" data-i18n="choicesHelp">Butonlar: Sonraki, Final, Hayır veya Kaçan. Kaçan buton iki şakadan sonra seçilebilir.</p>
+      </div>
+      <div class="panel">
+        <div class="panelhead"><h3 data-i18n="endings">🎊 Final ekranları</h3><span class="tag" data-i18n="twoEndings">2 SON</span></div>
+        <div class="fields">
+          <div class="field"><label for="successTitle" data-i18n="successTitle">Mutlu final başlığı</label><input class="control" id="successTitle" maxlength="100" data-end="success" data-prop="title"></div>
+          <div class="field"><label for="successBody" data-i18n="successBody">Mutlu final mesajı</label><textarea class="control" id="successBody" maxlength="600" rows="3" data-end="success" data-prop="body"></textarea></div>
+          <div class="field"><label for="declineTitle" data-i18n="declineTitle">Hayır derse başlık</label><input class="control" id="declineTitle" maxlength="100" data-end="decline" data-prop="title"></div>
+          <div class="field"><label for="declineBody" data-i18n="declineBody">Hayır derse mesaj</label><textarea class="control" id="declineBody" maxlength="600" rows="3" data-end="decline" data-prop="body"></textarea></div>
+        </div>
+      </div>
+      <div class="note" data-i18n="privacy">🔒 Düzenlemeler yalnızca bu tarayıcıda saklanır. Paylaşmak için tek HTML dosyası indirebilir veya GitHub Pages kullanabilirsin.</div>
+    </section>
+
+    <aside class="preview-area">
+      <div class="preview-shell">
+        <div class="previewtop"><div><div class="overline" data-i18n="liveDemo">02 · Canlı deneme</div><h2 data-i18n="myMiniSite">📱 Mini siten</h2></div><button type="button" class="button tiny" id="reloadPreview" data-i18n="restartPreview">↻ Yeniden başlat</button></div>
+        <p class="preview-note" data-i18n="previewNote">Seçeneklere bas. Soldaki değişiklikleri burada dene.</p>
+        <div class="screen"><iframe id="previewFrame" title="LoveLab preview" sandbox="allow-scripts"></iframe></div>
+        <div class="export-row"><button class="button primary" type="button" id="exportHtml" data-i18n="downloadHtml">↓ HTML indir</button><button class="button dark" type="button" id="shareLink" data-i18n="shareLink">🔗 Linki kopyala</button></div>
+        <div class="preview-bottom"><button class="button" type="button" id="demoButton" data-i18n="fullscreen">▶ Tam ekranda dene</button><button class="button" type="button" id="saveJson" data-i18n="backup">⇩ Projeyi yedekle</button></div>
+        <div class="preview-bottom"><button class="button" type="button" id="loadJson" data-i18n="restore">⇧ Yedekten yükle</button><input id="fileImport" type="file" accept="application/json,.json" hidden></div>
+        <p class="reminder" data-i18n="exportNote">İndirilen HTML tek başına açılır. Link paylaşımı için bu stüdyoyu GitHub Pages'te yayımlayabilirsin.</p>
+      </div>
+      <div class="footer-note">LoveLab Studio · v2.0 · Vanilla JS · made with 💗</div>
+    </aside>
+  </div>
+  <section class="viewer" id="viewer" aria-label="Surprise fullscreen"><button id="exitViewer" class="exitview" type="button" data-i18n="closeViewer">✕ Stüdyoya dön</button><iframe id="viewerFrame" title="Interactive surprise" sandbox="allow-scripts"></iframe></section>
+  <div id="toast" class="toast" role="status" hidden></div>
+</body>
+</html>

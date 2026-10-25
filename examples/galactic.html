@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#fcf2f7">
+  <title>Galactic invitation 🛸</title>
+  <style>
+:root{font-family:ui-rounded,'Trebuchet MS',system-ui,sans-serif;--bg:#fff0f4;--bg2:#f5edff;--paper:#fffafa;--ink:#4e3748;--muted:#967987;--accent:#e86d9b;--accent2:#f7b0c8;--line:#f4d4df;--shadow:#e9b3c650}
+*{box-sizing:border-box}
+body{min-height:100svh;display:grid;place-items:center;margin:0;padding:24px 14px;color:var(--ink);background:radial-gradient(circle at 20% 10%,#fff9de,transparent 34%),radial-gradient(circle at 80% 90%,var(--bg2),transparent 40%),var(--bg);overflow-x:hidden;transition:background .3s}
+body[data-theme="night"]{--bg:#181628;--bg2:#342749;--paper:#252136;--ink:#fff2fa;--muted:#c1aabf;--accent:#c793ff;--accent2:#7e61b8;--line:#51435d;--shadow:#09051275}
+body[data-theme="sunny"]{--bg:#fff1d7;--bg2:#ffe4c5;--paper:#fffdf5;--ink:#60452d;--muted:#aa7e61;--accent:#f49d47;--accent2:#ffd080;--line:#f3dec2;--shadow:#d9b0804f}
+body[data-theme="bubu"]{--bg:#fff0ea;--bg2:#fbd0d9;--paper:#fffbf8;--ink:#644643;--muted:#a27c79;--accent:#e58a98;--accent2:#f9bec5;--line:#f1d2cd;--shadow:#cb8f9351}
+body[data-theme="alien"]{--bg:#10192e;--bg2:#243e50;--paper:#1d2b41;--ink:#effcfb;--muted:#aac8c8;--accent:#58d6b0;--accent2:#348c89;--line:#3c5b65;--shadow:#03071098}
+body[data-theme="floral"]{--bg:#f7fbe7;--bg2:#f9e1e9;--paper:#fffdf8;--ink:#435740;--muted:#83917d;--accent:#e87da3;--accent2:#f5b5cc;--line:#dbe5d3;--shadow:#9ebd9c50}
+.specks{pointer-events:none;position:fixed;inset:0;opacity:.45;background-image:radial-gradient(var(--accent2) 1.4px,transparent 1.4px);background-size:33px 33px;mask-image:linear-gradient(125deg,#000,transparent 70%)}
+body[data-theme="alien"] .specks{background-image:radial-gradient(#bafef4 1px,transparent 1px),radial-gradient(#d7b1ff 2px,transparent 2px);background-size:27px 27px,83px 83px;opacity:.6}
+.card{position:relative;isolation:isolate;width:min(100%,480px);background:var(--paper);border:1px solid var(--line);border-radius:34px;padding:28px 25px 23px;box-shadow:0 26px 75px var(--shadow);text-align:center;animation:pop .4s ease both}
+@keyframes pop{from{opacity:0;transform:translateY(13px)}to{opacity:1;transform:translateY(0)}}
+.brand{font-size:11px;letter-spacing:2px;color:var(--muted);font-weight:900;text-transform:uppercase}
+.illustration{height:155px;display:grid;place-items:center;margin:12px auto 6px;position:relative;overflow:visible}
+.art-default{font-size:78px;line-height:1.2;animation:bob 3.3s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-7px) rotate(-5deg)}}
+.art-bubu,.art-alien,.art-floral{display:none}
+body[data-theme="bubu"] .art-default,body[data-theme="alien"] .art-default,body[data-theme="floral"] .art-default{display:none}
+body[data-theme="bubu"] .art-bubu{display:flex;align-items:center;justify-content:center;gap:16px;position:relative;width:100%;height:100%}
+.buddy{width:118px;height:112px;border-radius:52% 52% 46% 46%;position:relative;box-shadow:0 8px 0 #b9808440, inset -9px -11px 0 #8c615b18;animation:bob 3.5s ease-in-out infinite}
+.buddy.bear{background:#b98469;border:3px solid #78564f;transform:rotate(-5deg)}.buddy.panda{background:#fffdf6;border:3px solid #644d4b;animation-delay:-1.5s}
+.buddy .ear{position:absolute;width:34px;height:34px;border-radius:50%;top:-14px;z-index:-1;border:3px solid #78564f;background:#a67561}
+.buddy .ear.left{left:8px}.buddy .ear.right{right:8px}
+.buddy.panda .ear{background:#443635;border-color:#443635}
+.buddy .eye{position:absolute;width:9px;height:12px;background:#43342e;border-radius:50%;top:49px}
+.buddy .eye.left{left:35px}.buddy .eye.right{right:35px}
+.buddy.panda .eye{width:13px;height:18px;top:45px;box-shadow:0 0 0 6px #4a3a38}
+.buddy .muzzle{position:absolute;width:15px;height:9px;background:#553c35;border-radius:55% 55% 70% 70%;left:calc(50% - 7px);top:69px}
+.buddy .blush{position:absolute;width:18px;height:11px;background:#f4a3ad;opacity:.83;border-radius:50%;top:71px}
+.buddy .blush.left{left:13px}.buddy .blush.right{right:13px}
+.littleheart{color:#ed8898;font-size:32px;position:absolute;top:-10px;z-index:3;animation:bob 2s infinite}
+body[data-theme="alien"] .art-alien{position:relative;width:100%;height:100%;display:grid;place-items:center}
+.art-alien .planet{position:absolute;font-size:68px;left:9%;top:22px;transform:rotate(-13deg)}
+.art-alien .ufo{position:absolute;font-size:75px;right:8%;top:5px;animation:bob 2.5s infinite}
+.art-alien .little-alien{position:absolute;font-size:80px;bottom:-4px;filter:drop-shadow(0 7px 9px #50d4af59)}
+.space-star{position:absolute;color:#b2ffdf;font-size:24px}.s1{top:2px;left:32%}.s2{right:24%;bottom:0}
+body[data-theme="floral"] .art-floral{display:flex;align-items:end;justify-content:center;gap:6px;width:100%;height:100%;font-size:55px}
+.art-floral span{animation:bob 3s ease-in-out infinite}.art-floral span:nth-child(2){font-size:74px;animation-delay:-1s}.art-floral span:nth-child(3){animation-delay:-2s}.art-floral span:nth-child(4){font-size:41px;animation-delay:-.5s}
+.tag{display:inline-block;color:var(--accent);border:1px solid var(--line);background:var(--bg);padding:7px 12px;border-radius:99px;font-size:12px;font-weight:800;max-width:100%;overflow-wrap:anywhere}
+h1{font-weight:900;font-size:clamp(26px,7.3vw,41px);letter-spacing:-1.2px;line-height:1.1;margin:17px 0 11px;overflow-wrap:anywhere}
+.message{font-size:16px;line-height:1.6;color:var(--muted);white-space:pre-wrap;margin:0 auto 20px;max-width:370px;overflow-wrap:anywhere}
+.choice-zone{position:relative;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:10px;min-height:113px;padding:17px 12px;border-radius:21px;background:var(--bg);border:1px dashed var(--line)}
+button{font:800 14px ui-rounded,'Trebuchet MS',sans-serif;min-height:47px;padding:11px 17px;border:0;border-radius:16px;background:var(--accent);color:white;cursor:pointer;box-shadow:0 5px 0 var(--accent2);transition:transform .14s;max-width:100%;overflow-wrap:anywhere}
+body[data-theme="alien"] button:not(.alt):not(.runaway){color:#142b31}
+button:active{transform:translateY(3px);box-shadow:0 2px 0 var(--accent2)}
+button.alt{background:var(--paper);color:var(--ink);border:1px solid var(--line);box-shadow:0 5px 0 var(--line)}
+button.runaway{background:var(--paper);color:var(--muted);border:1px solid var(--line);box-shadow:0 5px 0 var(--line)}
+button.moved{position:absolute;z-index:1;margin:0}button:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:17px;color:var(--muted);font-size:12px}
+.restart{background:transparent;border:0;box-shadow:none;color:var(--accent);padding:8px;min-height:0;font-size:12px}.restart:active{box-shadow:none}
+.progress{display:flex;gap:6px}.progress i{width:8px;height:8px;border-radius:9px;background:var(--line)}.progress i.on{background:var(--accent);width:24px}
+.celebrate{position:fixed;inset:0;pointer-events:none;overflow:hidden}.celebrate span{position:absolute;bottom:-40px;font-size:25px;animation:rise 2.4s ease-out forwards}@keyframes rise{to{transform:translateY(-112vh) rotate(40deg);opacity:0}}
+.mini{font-size:12px;color:var(--muted);padding-top:10px;min-height:24px;line-height:1.4}
+@media(max-width:390px){.card{padding:25px 15px 20px}.buddy{width:100px;height:97px}.buddy .eye{top:45px}.buddy .muzzle{top:67px}.buddy .blush{top:65px}.buddy .ear{width:31px;height:31px}.buddy .eye.left{left:31px}.buddy .eye.right{right:31px}.illustration{height:136px}.message{font-size:15px}button{padding:10px 12px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+</style>
+</head>
+<body>
+  <div class="specks" aria-hidden="true"></div>
+  <div class="celebrate" id="celebrate" aria-hidden="true"></div>
+  <main class="card" aria-live="polite">
+    <div class="brand">MADE WITH ♡ LOVELAB</div>
+    <div id="illustration" class="illustration" aria-hidden="true">
+      <div class="art-default" id="picture">💌</div>
+      <div class="art-bubu">
+        <div class="buddy bear"><span class="ear left"></span><span class="ear right"></span><span class="eye left"></span><span class="eye right"></span><span class="muzzle"></span><span class="blush left"></span><span class="blush right"></span></div>
+        <span class="littleheart">♥</span>
+        <div class="buddy panda"><span class="ear left"></span><span class="ear right"></span><span class="eye left"></span><span class="eye right"></span><span class="muzzle"></span><span class="blush left"></span><span class="blush right"></span></div>
+      </div>
+      <div class="art-alien"><span class="planet">🪐</span><span class="ufo">🛸</span><span class="little-alien">👽</span><span class="space-star s1">✦</span><span class="space-star s2">✧</span></div>
+      <div class="art-floral"><span>🌸</span><span>🌼</span><span>🌷</span><span>🌿</span></div>
+    </div>
+    <div class="tag" id="label"></div>
+    <h1 id="title"></h1>
+    <p class="message" id="message"></p>
+    <section id="choiceZone" class="choice-zone" aria-label="Answer choices"></section>
+    <p id="hint" class="mini" aria-live="polite"></p>
+    <div class="foot">
+      <span id="sign"></span>
+      <span id="dots" class="progress"></span>
+      <button class="restart" id="restart" type="button"></button>
+    </div>
+  </main>
+  <script>
+/* This file runs inside the exported mini-site, not the editor. */
+'use strict';
+const data = JSON.parse(decodeURIComponent('%7B%22name%22%3A%22Galactic%20invitation%20%F0%9F%9B%B8%22%2C%22to%22%3A%22Earthling%22%2C%22from%22%3A%22Your%20alien%22%2C%22success%22%3A%7B%22title%22%3A%22MISSION%20ACCEPTED!%20%F0%9F%9A%80%22%2C%22body%22%3A%22Our%20intergalactic%20date%20is%20confirmed.%5CnCoordinates%3A%20you%20%2B%20me%20%2B%20a%20cup%20of%20coffee.%22%7D%2C%22decline%22%3A%7B%22title%22%3A%22Signal%20received%20%F0%9F%A4%8D%22%2C%22body%22%3A%22Spaceship%20heading%20home.%20See%20you%20on%20another%20planet%2C%20another%20day.%22%7D%2C%22scenes%22%3A%5B%7B%22emoji%22%3A%22%F0%9F%9B%B8%22%2C%22title%22%3A%22EARTHLING%2C%20DO%20YOU%20COPY%3F%22%2C%22note%22%3A%22Sending%20you%20an%20exclusive%20message%20from%20a%20distant%20galaxy.%22%2C%22choices%22%3A%5B%7B%22label%22%3A%22Loud%20and%20clear!%20%F0%9F%93%A1%22%2C%22action%22%3A%22next%22%7D%2C%7B%22label%22%3A%22Busy%20right%20now%22%2C%22action%22%3A%22decline%22%7D%5D%7D%2C%7B%22emoji%22%3A%22%F0%9F%91%BD%22%2C%22title%22%3A%22SECRET%20SPACE%20MISSION%22%2C%22note%22%3A%22Dare%20to%20join%20me%20for%20a%20coffee%3F%22%2C%22choices%22%3A%5B%7B%22label%22%3A%22LET%E2%80%99S%20GO%20%F0%9F%9A%80%22%2C%22action%22%3A%22success%22%7D%2C%7B%22label%22%3A%22Let%20me%20think%22%2C%22action%22%3A%22next%22%7D%2C%7B%22label%22%3A%22Absolutely%20not%22%2C%22action%22%3A%22runaway%22%7D%5D%7D%2C%7B%22emoji%22%3A%22%F0%9F%AA%90%22%2C%22title%22%3A%22FINAL%20TRANSMISSION%22%2C%22note%22%3A%22Coffee%20is%20on%20me%2C%20stars%20are%20on%20the%20universe.%20Deal%3F%22%2C%22choices%22%3A%5B%7B%22label%22%3A%22DEAL%20%E2%9C%A8%22%2C%22action%22%3A%22success%22%7D%2C%7B%22label%22%3A%22Another%20time%22%2C%22action%22%3A%22decline%22%7D%5D%7D%5D%2C%22lang%22%3A%22en%22%2C%22theme%22%3A%22alien%22%7D'));
+const el = id => document.getElementById(id);
+const state = {scene:0,end:null,escapes:0};
+const strings = {
+  tr:{note:'KÜÇÜK BİR SÜRPRİZ',loveNote:'LOVE NOTE',restart:'↻ Baştan',replay:'Bir daha oyna ↻',pick:'Seç',runawayHint:'Tamam tamam, gerçekten hayır da diyebilirsin 🤍'},
+  de:{note:'EINE KLEINE ÜBERRASCHUNG',loveNote:'LIEBESNOTIZ',restart:'↻ Neustart',replay:'Noch einmal ↻',pick:'Wählen',runawayHint:'Okay, du darfst natürlich auch Nein sagen 🤍'},
+  en:{note:'A LITTLE SURPRISE',loveNote:'LOVE NOTE',restart:'↻ Restart',replay:'Play again ↻',pick:'Choose',runawayHint:'Okay, you can absolutely say no 🤍'}
+};
+const lang = ['tr','en','de'].includes(data.lang) ? data.lang : 'tr';
+const tr = strings[lang];
+const allowed = ['rose','night','sunny','bubu','alien','floral'];
+document.documentElement.lang = lang;
+document.body.dataset.theme = allowed.includes(data.theme) ? data.theme : 'rose';
+function setText(id,value){el(id).textContent=String(value ?? '');}
+function render(){
+  const scene=(data.scenes||[])[state.scene]||{};
+  const finished=Boolean(state.end);
+  const ending=state.end==='decline'?data.decline:data.success;
+  setText('picture',finished?(state.end==='decline'?'🤍':'🎉'):(scene.emoji||'💌'));
+  setText('label',finished?tr.loveNote:`${data.to || tr.note} ♡ ${data.from || 'LoveLab'}`);
+  setText('title',finished?(ending?.title||''):scene.title);
+  setText('message',finished?(ending?.body||''):scene.note);
+  setText('sign',`♡ ${data.from||'LoveLab'}`);
+  setText('hint',!finished&&state.escapes>=2?tr.runawayHint:'');
+  setText('restart',tr.restart);
+  const zone=el('choiceZone');
+  zone.replaceChildren();
+  if(finished){
+    addButton(zone,tr.replay,'alt',()=>reset());
+  } else {
+    (scene.choices||[]).forEach((choice,index)=>{
+      const button=addButton(zone,choice.label||tr.pick,index?'alt':'primary',()=>choose(choice,button));
+      if(choice.action==='runaway'){
+        button.classList.add('runaway');
+        let locked=false;
+        button.addEventListener('pointerenter',event=>{
+          if(event.pointerType==='mouse'&&state.escapes<2&&!locked){
+            locked=true;move(button);setTimeout(()=>locked=false,350);
+          }
+        });
+      }
+    });
+  }
+  const dots=el('dots');dots.replaceChildren();
+  (data.scenes||[]).forEach((_,index)=>{
+    const dot=document.createElement('i');if(!finished&&index===state.scene)dot.className='on';dots.appendChild(dot);
+  });
+}
+function addButton(parent,label,klass,fn){
+  const b=document.createElement('button');b.type='button';b.className=klass;b.textContent=label;
+  b.addEventListener('click',fn);parent.appendChild(b);return b;
+}
+function choose(choice,button){
+  if(choice.action==='runaway'){
+    if(state.escapes<2){move(button);return;}
+    state.end='decline';render();return;
+  }
+  if(choice.action==='next'){
+    if(state.scene<(data.scenes?.length||1)-1){state.scene++;state.escapes=0;render();}
+    else {state.end='success';render();confetti();}
+    return;
+  }
+  if(choice.action==='decline'){state.end='decline';render();return;}
+  state.end='success';render();confetti();
+}
+function move(button){
+  state.escapes++;
+  const zone=el('choiceZone');
+  const maxX=Math.max(4,zone.clientWidth-button.offsetWidth-10);
+  const maxY=Math.max(4,zone.clientHeight-button.offsetHeight-10);
+  button.classList.add('moved');
+  button.style.left=`${Math.random()*maxX}px`;
+  button.style.top=`${Math.random()*maxY}px`;
+  if(state.escapes>=2)setText('hint',tr.runawayHint);
+}
+function confetti(){
+  const root=el('celebrate');root.replaceChildren();
+  const motifs=data.theme==='alien'?['🛸','✨','👽','⭐']:data.theme==='floral'?['🌸','🌼','🌿','💗']:['💗','✨','💌','🤍'];
+  for(let i=0;i<26;i++){
+    const x=document.createElement('span');x.textContent=motifs[i%motifs.length];
+    x.style.left=(Math.random()*100)+'%';
+    x.style.animationDelay=(Math.random()*.9)+'s';
+    x.style.animationDuration=(1.8+Math.random()*1.2)+'s';
+    root.appendChild(x);
+  }
+  setTimeout(()=>root.replaceChildren(),3500);
+}
+function reset(){state.scene=0;state.end=null;state.escapes=0;render();}
+el('restart').addEventListener('click',reset);
+render();
+
+</script>
+</body>
+</html>
