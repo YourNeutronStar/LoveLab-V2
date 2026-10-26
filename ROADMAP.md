@@ -114,6 +114,27 @@ These are *release prerequisites*, not optional polish.
 
 Prioritize a feature if it **strengthens the Create → Share → Experience → Respond loop**, solves an observed user problem, and can be maintained safely. Otherwise, park it here.
 
+## Learning-first development policy — independent ownership 🧠
+
+**Goal:** LoveLab is both a product and a path to independent software engineering; the owner, not the assistant, makes implementation decisions and writes learning-task code.
+
+All future lessons follow the [Independent Learning Path](docs/INDEPENDENT_LEARNING_PATH.md): **targeted resource → 2–3 analogous exercises → solo LoveLab task → testing/debugging → code review → learner commit and reflection**. Offer graded hints rather than unsolicited full solutions; provide finished code only when explicitly requested. Track mastery rather than calendar deadlines.
+
+### Learning milestones (parallel with feature roadmap)
+
+- [ ] **CSS and design ownership:** selectors, cascade, variables, accessibility, responsive palettes; practise on separate cards/buttons before changing LoveLab.
+- [ ] **Semantic HTML and interfaces:** forms, accessible labels, Flexbox/Grid and settings UI.
+- [ ] **JavaScript autonomy:** DOM, events, functions, state and browser-debugger use; practise counters/toggles outside the project.
+- [ ] **Git and testing independence:** readable diffs, commits, regressions, simple automated testing.
+- [ ] **Backend/security comprehension:** Supabase Auth, SQL, PostgreSQL RLS and real A/B/C-user access tests.
+- [ ] **Independent milestone:** research, design, implement, verify and explain one complete small LoveLab feature with AI limited to hints/review.
+
+**Current implementation checkpoint (26 October 2026):** Auth, guest flow, password recovery, profiles and settings are in progress on `develop` and some flows have been tested locally. This is not proof of full independent mastery or production readiness. The public V2 on `main` remains independent.
+
+### Next major scientific project — helium physics 🔬
+
+Following the foundational software stages, create a **separate research roadmap** for He I, the lambda transition, He II/two-fluid behaviour, Monte Carlo and PINN experiments, and possible validated integration with OpenFOAM CFD. First learn scientific Python, numerical methods, model verification, data validity and uncertainty handling. Do not assume generic CFD solvers simulate superfluid He II without additional physics. Details and preliminary learning stages are in [Independent Learning Path](docs/INDEPENDENT_LEARNING_PATH.md).
+
 ## Suggested implementation order
 
 1. [ ] Keep V2 intact; work in `develop`.
@@ -130,4 +151,4 @@ Prioritize a feature if it **strengthens the Create → Share → Experience →
 
 **Roadmap policy:** New ideas go into the backlog first. Scope and release order may change based on testing, feasibility, accessibility, security, and real feedback.
 
-_Last updated: 2026-10-25._
+_Last updated: 2026-10-26._
