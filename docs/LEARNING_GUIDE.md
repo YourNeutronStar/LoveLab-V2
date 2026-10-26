@@ -1,5 +1,8 @@
 # LoveLab — Developer Learning Guide 👩🏻‍💻
 
+
+> **Learning contract (26 October 2026):** Before any LoveLab learning task, provide one or two focused sources and 2–3 analogous practice exercises, then let the owner implement the actual feature. Give hints in stages; provide full code only by request. See [Independent Learning Path](INDEPENDENT_LEARNING_PATH.md) for the complete method, CSS starter and helium progression.
+
 This is an intentionally beginner-friendly tour of the project's architecture. Read one file, change one thing, test it, and commit the change.
 
 ## Map of responsibilities
